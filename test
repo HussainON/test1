@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+		<head>
+				<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+				<style>
+						body {
+		    					margin: 0;
+		    					height: 100vh;
+						}
+
+						canvas {
+								display: block;
+						}
+
+						.topnav {
+		  						overflow: hidden;
+		  						background-color: #000;
+						}
+
+						.topnav a {
+		  						float: right;
+		  						color: #f2f2f2;
+		  						text-align: center;
+		 						 padding: 14px 16px;
+		  						text-decoration: none;
+		  						font-size: 17px;
+						}
+
+						.topnav a:hover {
+		  						background-color: #fff;
+		  						color: black;
+						}
+
+						.topnav a.active {
+		 					 	background-color: #2C528C;
+		  						color: white;
+						}
+
+						.topnav a.active:hover {
+		  						background-color: #51A0D5;
+		  						color: white;
+						}
+
+						header h4 {
+								color: brown;
+								float: center;
+								text-align: center;
+								margin: 0px;
+						    	text-decoration: none;
+								font-family: Lobster;
+								text-shadow: 2px 2px 5px gray;
+								font-size: 40px;
+						}
+
+						p {
+								color: black;
+								font-family: sans-serif;
+						}
+
+						.center {
+								position: relative;
+						    	margin: auto;
+						   		display: block;
+								background-color: black;
+						}
+
+						#box-container {
+						    	display: flex;
+						    	background-color: black;
+						}
+
+						header #searchbar {
+								float: left;
+								text-align: center;
+						  		padding: 14px 16px;
+						    	text-decoration: none;
+						}
+
+						.Science {
+								position: absolute;
+								top: 10.6em;
+								left: 6.1em;
+								font-family: 'Montserrat';
+								font-size: 7em;
+								text-transform: uppercase;
+								width: auto;
+								line-height: .8em;
+								border: 5px solid black;
+								padding: .2em;
+						}
+
+						.Gaming {
+								position: absolute;
+								top: 21.5em;
+								left: 6.2em;
+								font-family: 'Montserrat';
+								font-size: 7em;
+								text-transform: uppercase;
+								width: auto;
+								line-height: .8em;
+								border: 5px solid black;
+								padding: .2em;
+						}
+
+						.News {
+								position: absolute;
+								top: 32.5em;
+								left: 6.9em;
+								font-family: 'Montserrat';
+								font-size: 7em;
+								text-transform: uppercase;
+								width: auto;
+								line-height: .8em;
+								border: 5px solid black;
+								padding: .2em;
+						}
+
+						.Sports {
+								position: absolute;
+								top: 43.5em;
+								left: 6.4em;
+								font-family: 'Montserrat';
+								font-size: 7em;
+								text-transform: uppercase;
+								width: auto;
+								line-height: .8em;
+								border: 5px solid black;
+								padding: .2em;
+						}
+
+						.Entertainment {
+								position: absolute;
+								top: 54em;
+								left: 3.8em;
+								font-family: 'Montserrat';
+								font-size: 7em;
+								text-transform: uppercase;
+								width: auto;
+								line-height: .8em;
+								border: 5px solid black;
+								padding: .2em;
+						}
+
+						.thumbnail {
+						    	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+					</style>
+					<meta charset="ISO-8859-1">
+					<script type="text/javascript"></script>
+					<title>WeMars</title>
+		</head>
+<body>
+		
+		<h1 class="Science">Science</h1>
+		<h1 class="Gaming">Gaming</h1>
+		<h1 class="News">News</h1>
+		<h1 class="Sports">Sports</h1>
+		<h1 class="Entertainment">Entertainment</h1>
+		<header>
+				<div class="topnav">
+						<a class="active" href="#home">Home</a>
+		        		<a href="#TV"><strong>TV</strong></a>
+		    			<a href="#Stories"><strong>Stories</strong></a>
+		    			<a href="#Photos"><strong>Photos</strong></a>
+		    			<a href="#Messages"><strong>Messgaes</strong></a>
+		    			<form id="searchbar">
+		      					<input type="search" id="search" name="search" placeholder="Search Residents. .">
+		      					<input type="submit" name="submit" value="Go!">
+		    			</form>
+		    			<h4><em>WeMars</em></h4>
+				</div>
+		</header>
+
+		<div class="thumbnail" id="box-container"><img src="http://www.digitaljournal.com/img/5/0/8/3/9/3/i/5/8/4/o/Mars-Schiaparelli.jpg" alt="A cute orange cat lying on its back." height="500" width="500" class="center"></div>
+		<p><a href="JavaScript:void(0)" onClick="greet();"><strong>Greet the residents!</strong></a></p>
+
+		<div class="black-background">
+		   		<p class="text-color">Goals of the app:</p>
+		    	<ul class="list-color">
+		     		 <li>Making social media far more interesting.</li>
+		      		 <li>Getting creative people to their ultimate potential.</li>
+		      		 <li>Giving users the opportunity to live the best social media experience.</li>
+		    	</ul>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/102/three.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/86/three.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> -->
+		<script type="text/javascript">
+						var scene = new THREE.Scene();
+		
+						var camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000)
+						camera.position.z = 3;
+		
+						var renderer = new THREE.WebGLRenderer({antialias: true});
+						renderer.setClearColor("#e5e5e5");
+						renderer.setSize(window.innerWidth,window.innerHeight);
+		
+						document.body.appendChild(renderer.domElement);
+		
+						window.addEventListener('resize', () => {
+								renderer.setSize(window.innerWidth,window.innerHeight);
+						 		camera.aspect = window.innerWidth / window.innerHeight;
+		
+						 		camera.updateProjectionMatrix();
+						})
+		
+						var geometry = new THREE.SphereGeometry(1, 50, 50);
+						var material = new THREE.MeshLambertMaterial({color: 0xFFD700});
+						var mesh = new THREE.Mesh(geometry, material);
+						scene.add(mesh);
+		
+						var light = new THREE.PointLight(0xFFFFFF, 1, 500)
+						light.position.set(10, 0, 25);
+						scene.add(light);
+		
+						var render = function() {
+						 		requestAnimationFrame(render);
+		
+						 		/* mesh.rotation.x += 0.01; */
+						 		mesh.rotation.y += 0.01;
+		
+						 		renderer.render(scene, camera);
+						}
+		
+						render();
+		</script>
+		<div class="black-background">
+		   		<p class="text-color">Goals of the app:</p>
+		    	<ul class="list-color">
+		     		 <li>Making social media far more interesting.</li>
+		      		 <li>Getting creative people to their ultimate potential.</li>
+		      		 <li>Giving users the opportunity to live the best social media experience.</li>
+		    	</ul>
+		</div>
+		<script type="text/javascript">
+						var scene = new THREE.Scene();
+						
+						var camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000)
+						camera.position.z = 3;
+				
+						var renderer = new THREE.WebGLRenderer({antialias: true});
+						renderer.setClearColor("#e5e5e5");
+						renderer.setSize(window.innerWidth,window.innerHeight);
+				
+						document.body.appendChild(renderer.domElement);
+						
+						window.addEventListener('resize', () => {
+								renderer.setSize(window.innerWidth,window.innerHeight);
+						 		camera.aspect = window.innerWidth / window.innerHeight;
+						 
+						 		camera.updateProjectionMatrix();
+						})
+						
+						var geometry = new THREE.SphereGeometry(1, 50, 50);
+						var material = new THREE.MeshLambertMaterial({color: 0xE83861});
+						var mesh = new THREE.Mesh(geometry, material);
+						scene.add(mesh);
+						
+						var light = new THREE.PointLight(0xFFFFFF, 1, 500)
+						light.position.set(10, 0, 25);
+						scene.add(light);
+						
+						var render = function() {
+						 		requestAnimationFrame(render);
+						 
+						 		/* mesh.rotation.x += 0.01; */
+						 		mesh.rotation.y += 0.01;
+						 
+						 		renderer.render(scene, camera);
+						}
+				
+						render();
+		</script>
+		<div class="black-background">
+		   		<p class="text-color">Goals of the app:</p>
+		    	<ul class="list-color">
+		     		 <li>Making social media far more interesting.</li>
+		      		 <li>Getting creative people to their ultimate potential.</li>
+		      		 <li>Giving users the opportunity to live the best social media experience.</li>
+		    	</ul>
+		</div>
+		<script type="text/javascript">
+						var scene = new THREE.Scene();
+						
+						var camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000)
+						camera.position.z = 3;
+				
+						var renderer = new THREE.WebGLRenderer({antialias: true});
+						renderer.setClearColor("#e5e5e5");
+						renderer.setSize(window.innerWidth,window.innerHeight);
+				
+						document.body.appendChild(renderer.domElement);
+						
+						window.addEventListener('resize', () => {
+								renderer.setSize(window.innerWidth,window.innerHeight);
+						 		camera.aspect = window.innerWidth / window.innerHeight;
+						 
+						 		camera.updateProjectionMatrix();
+						})
+						
+						var geometry = new THREE.SphereGeometry(1, 50, 50);
+						var material = new THREE.MeshLambertMaterial({color: 0x1363FA });
+						var mesh = new THREE.Mesh(geometry, material);
+						scene.add(mesh);
+						
+						var light = new THREE.PointLight(0xFFFFFF, 1, 500)
+						light.position.set(10, 0, 25);
+						scene.add(light);
+						
+						var render = function() {
+						 		requestAnimationFrame(render);
+						 
+						 		/* mesh.rotation.x += 0.01; */
+						 		mesh.rotation.y += 0.01;
+						 
+						 		renderer.render(scene, camera);
+						}
+				
+						render();
+		</script>
+		<div class="black-background">
+		   		<p class="text-color">Goals of the app:</p>
+		    	<ul class="list-color">
+		     		 <li>Making social media far more interesting.</li>
+		      		 <li>Getting creative people to their ultimate potential.</li>
+		      		 <li>Giving users the opportunity to live the best social media experience.</li>
+		    	</ul>
+		</div>
+		<script type="text/javascript">
+						var scene = new THREE.Scene();
+						
+						var camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000)
+						camera.position.z = 3;
+				
+						var renderer = new THREE.WebGLRenderer({antialias: true});
+						renderer.setClearColor("#e5e5e5");
+						renderer.setSize(window.innerWidth,window.innerHeight);
+				
+						document.body.appendChild(renderer.domElement);
+						
+						window.addEventListener('resize', () => {
+								renderer.setSize(window.innerWidth,window.innerHeight);
+						 		camera.aspect = window.innerWidth / window.innerHeight;
+						 
+						 		camera.updateProjectionMatrix();
+						})
+						
+						var geometry = new THREE.SphereGeometry(1, 50, 50);
+						var material = new THREE.MeshLambertMaterial({color: 0xBDFF42 });
+						var mesh = new THREE.Mesh(geometry, material);
+						scene.add(mesh);
+						
+						var light = new THREE.PointLight(0xFFFFFF, 1, 500)
+						light.position.set(10, 0, 25);
+						scene.add(light);
+						
+						var render = function() {
+						 		requestAnimationFrame(render);
+						 
+						 		/* mesh.rotation.x += 0.01; */
+						 		mesh.rotation.y += 0.01;
+						 
+						 		renderer.render(scene, camera);
+						}
+				
+						render();
+		</script>
+		<div class="black-background">
+		   		<p class="text-color">Goals of the app:</p>
+		    	<ul class="list-color">
+		     		 <li>Making social media far more interesting.</li>
+		      		 <li>Getting creative people to their ultimate potential.</li>
+		      		 <li>Giving users the opportunity to live the best social media experience.</li>
+		    	</ul>
+		</div>
+		<script type="text/javascript">
+						var scene = new THREE.Scene();
+						
+						var camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000)
+						camera.position.z = 3;
+				
+						var renderer = new THREE.WebGLRenderer({antialias: true});
+						renderer.setClearColor("#e5e5e5");
+						renderer.setSize(window.innerWidth,window.innerHeight);
+				
+						document.body.appendChild(renderer.domElement);
+						
+						window.addEventListener('resize', () => {
+								renderer.setSize(window.innerWidth,window.innerHeight);
+						 		camera.aspect = window.innerWidth / window.innerHeight;
+						 
+						 		camera.updateProjectionMatrix();
+						})
+						
+						var geometry = new THREE.SphereGeometry(1, 20, 20);
+						var material = new THREE.MeshLambertMaterial({color: 0xE831B1 });
+						var meshEntertainment = new THREE.Mesh(geometry, material);
+						scene.add(meshEntertainment);
+						
+						var light = new THREE.PointLight(0xFFFFFF, 1, 500)
+						light.position.set(10, 0, 25);
+						scene.add(light);
+						
+						var render = function() {
+						 		requestAnimationFrame(render);
+						 
+						 		/* mesh.rotation.x += 0.01; */
+						 		meshEntertainment.rotation.y += 0.01;
+						 
+						 		renderer.render(scene, camera);
+						}
+				
+						render();
+		</script>
+</body>
+</html>
